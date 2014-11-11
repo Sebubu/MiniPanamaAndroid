@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">MiniPanamaAndroid</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="text_activity_login">Wilkommen zur HSR Gadget Bibliothek. Loggen Sie sich mit Ihren Daten ein oder regestrieren sie sich neu.</string>
+    <string name="email_activity_login">E-Mail</string>
+    <string name="password_activity_login">Password</string>
 </resources>
