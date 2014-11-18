@@ -1,4 +1,4 @@
-package ch.hsr.sevi.minipanamaandroid;
+package ch.hsr.sevi.view;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,16 +8,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import ch.hsr.sevi.bl.Gadget;
 import ch.hsr.sevi.library.*;
 
 public class MainActivity extends Activity {
 
     //sku exapmple to use library
-    LibraryService library = new LibraryService();
 
 
     @Override
@@ -34,7 +29,7 @@ public class MainActivity extends Activity {
                 System.out.println("Registred" + input);
             }
         };
-        library.register("test@hsr.ch", "password", "name", "studentNumber", registerCallback);
+        LibraryService.register("test@hsr.ch", "password", "name", "studentNumber", registerCallback);
 
         final Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {

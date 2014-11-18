@@ -1,4 +1,4 @@
-package ch.hsr.sevi.minipanamaandroid;
+package ch.hsr.sevi.view;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -12,5 +12,5 @@
     <string name="matrikelNummer_activity_registration">Matrikel Nummer</string>
     <string name="name_activity_registration">Name</string>
     <string name="text_activity_registration">Geben Sie Ihre Daten ein um einen neuen Account zu erstellen.</string>
-
+    <string name="Registrieren">Registrieren</string>
 </resources>
