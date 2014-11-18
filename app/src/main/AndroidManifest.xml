@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ch.hsr.sevi.view" >
-    <uses-sdk android:minSdkVersion="17" android:targetSdkVersion="19"/>
+
+    <uses-sdk
+        android:minSdkVersion="17"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <android:uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -14,19 +29,27 @@
         <activity
             android:name="ch.hsr.sevi.view.LoginActivity"
             android:label="@string/title_activity_login" >
-        </activity>
-        <activity
-            android:name="ch.hsr.sevi.view.RegistrationActivity"
-            android:label="@string/reg_title" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".LoginActivity" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="ch.hsr.sevi.view.RegistrationActivity"
+            android:label="@string/reg_title"
+            android:parentActivityName="ch.hsr.sevi.view.LoginActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ch.hsr.sevi.view.LoginActivity" />
+        </activity>
+        <activity
+            android:name="ch.hsr.sevi.minipanamaandroid.Reservation"
+            android:label="@string/title_activity_reservation"
+            android:parentActivityName="ch.hsr.sevi.view.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ch.hsr.sevi.view.MainActivity" />
+        </activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+
 </manifest>

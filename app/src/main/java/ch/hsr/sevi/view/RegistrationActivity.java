@@ -47,23 +47,25 @@ public class RegistrationActivity extends Activity {
             public void onClick(View view) {
                 txtValidate.setText("");
 
-                String name = txtName.getText().toString();
-                if(name.length() < 3){
-                    txtValidate.setText(getResources().getString(R.string.reg_InvalidName));
-                }
-                String mailText = txtMail.getText().toString();
-                if(!mailText.contains("@") || !mailText.contains(".")) {
-                    txtValidate.setText(getResources().getString(R.string.reg_InvalidMail));
-                }
-                String martrikel = txtMatrikel.getText().toString();
-                if(!martrikel.contains("-")) {
-                    txtValidate.setText(getResources().getString(R.string.reg_InvalidMartrikel));
-                }
                 String pw1 = txtPw1.getText().toString();
                 String pw2 = txtPw2.getText().toString();
                 if(!pw1.equals(pw2) || pw1.length() < 3) {
                     txtValidate.setText(getResources().getString(R.string.reg_InvalidPassword));
                 }
+                String martrikel = txtMatrikel.getText().toString();
+                if(!martrikel.contains("-")) {
+                    txtValidate.setText(getResources().getString(R.string.reg_InvalidMartrikel));
+                }
+                String mailText = txtMail.getText().toString();
+                if(!mailText.contains("@") || !mailText.contains(".")) {
+                    txtValidate.setText(getResources().getString(R.string.reg_InvalidMail));
+                }
+                String name = txtName.getText().toString();
+                if(name.length() < 3){
+                    txtValidate.setText(getResources().getString(R.string.reg_InvalidName));
+                }
+
+
 
                 if(txtValidate.getText().toString().isEmpty()) {
                     Callback<Boolean> registerCallback = new Callback<Boolean>() {
