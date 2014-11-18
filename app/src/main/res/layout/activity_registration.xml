@@ -73,5 +73,14 @@
             android:text="@string/Registrieren"
             android:id="@+id/buttonRegistrationReg"
             android:singleLine="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/textView4"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#AA3939" />
     </LinearLayout>
 </RelativeLayout>
