@@ -8,14 +8,33 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import ch.hsr.sevi.bl.Gadget;
 import ch.hsr.sevi.library.*;
 
 public class MainActivity extends Activity {
+
+    //sku exapmple to use library
+    LibraryService library = new LibraryService();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        System.out.println("test");
+
+        Callback<Boolean> registerCallback = new Callback<Boolean>() {
+            @Override
+            public void notfiy(Boolean input) {
+
+                System.out.println("Registred" + input);
+            }
+        };
+        library.register("test@hsr.ch", "password", "name", "studentNumber", registerCallback);
 
         final Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
