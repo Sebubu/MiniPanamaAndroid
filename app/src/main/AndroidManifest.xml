@@ -14,7 +14,6 @@
         <activity
             android:name="ch.hsr.sevi.view.LoginActivity"
             android:label="@string/title_activity_login" >
-
         </activity>
         <activity
             android:name="ch.hsr.sevi.view.RegistrationActivity"
