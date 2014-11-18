@@ -1,14 +1,12 @@
 package ch.hsr.sevi.view;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
-import ch.hsr.sevi.library.*;
+import ch.hsr.sevi.library.Callback;
+import ch.hsr.sevi.library.LibraryService;
 
 public class MainActivity extends Activity {
 
