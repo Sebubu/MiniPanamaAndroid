@@ -1,10 +1,10 @@
 package ch.hsr.sevi.view;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+<<<<<<< HEAD
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
@@ -19,6 +19,11 @@ import ch.hsr.sevi.bl.Loan;
 import ch.hsr.sevi.bl.Reservation;
 import ch.hsr.sevi.library.*;
 import ch.hsr.sevi.view.R;
+=======
+
+import ch.hsr.sevi.library.Callback;
+import ch.hsr.sevi.library.LibraryService;
+>>>>>>> 7cad6fcde9392ecafbaa06a0488f1de410971ec2
 
 public class MainActivity extends Activity {
 

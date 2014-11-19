@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">MiniPanamaAndroid</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="text_activity_login">Wilkommen zur HSR Gadget Bibliothek. Loggen Sie sich mit Ihren Daten ein oder regestrieren sie sich neu.</string>
     <string name="email_activity_login">E-Mail</string>
     <string name="password_activity_login">Password</string>
-    <string name="title_activity_registration">RegistrationActivity</string>
-    <string name="matrikelNummer_activity_registration">Matrikel Nummer</string>
     <string name="name_activity_registration">Name</string>
-    <string name="text_activity_registration">Geben Sie Ihre Daten ein um einen neuen Account zu erstellen.</string>
-    <string name="Registrieren">Registrieren</string>
     <string name="txtAusleihe_activity_main">Ihre aktuelle Ausleihe</string>
     <string name="txtReservation_activity_main">Ihre aktuelle Reservation</string>
     <string name="btnReservation_activity_main">Reservieren</string>
     <string name="btnReservationDelete_activity_main">Reservation löschen</string>
     <string name="btnLogout_activity_main">Logout</string>
+    <string name="reg_InvalidMail">Mailadresse ist ungültig</string>
+    <string name="reg_InvalidMartrikel">Martrikelnummer ist ungültig</string>
+    <string name="reg_InvalidPassword">Passwort ist ungültig</string>
+    <string name="reg_InvalidName">Name ist ungültig</string>
+    <string name="reg_title">RegistrationActivity</string>
+    <string name="reg_matrikelNummer">Matrikel Nummer</string>
+    <string name="reg_subtitle">Geben Sie Ihre Daten ein um einen neuen Account zu erstellen.</string>
+    <string name="reg_btnRegistrieren_text">Registrieren</string>
+    <string name="reg_Name">Name</string>
+    <string name="title_activity_reservation">Reservation</string>
+    <string name="res_title">Reservation erfassen</string>
+    <string name="res_btnReservieren_text">Selektierte reservieren</string>
+
 </resources>

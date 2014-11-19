@@ -9,15 +9,30 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:weightSum="1">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/text_activity_registration"/>
+            android:text="@string/reg_subtitle"/>
         android:id="@+id/textReg"/>
 
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/reg_Name"
+            android:id="@+id/textView5" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/reg_txtName"
+            android:singleLine="true"
+            android:inputType="textPersonName" />
 
         <TextView
             android:layout_width="match_parent"
@@ -31,20 +46,21 @@
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:ems="10"
-            android:id="@+id/textEmailReg" />
+            android:id="@+id/reg_txtMail" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/matrikelNummer_activity_registration"
+            android:text="@string/reg_matrikelNummer"
             android:id="@+id/MartrikelNummer" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
+            android:inputType="text"
             android:ems="10"
-            android:id="@+id/textMartrikelNummer" />
+            android:id="@+id/reg_txtMartrikelNummer"
+            android:password="false" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -58,20 +74,36 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:ems="10"
-            android:id="@+id/textPasswordReg" />
+            android:id="@+id/reg_txtPw1" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:ems="10"
-            android:id="@+id/textPasswordReg2"/>
+            android:id="@+id/reg_txtPw2"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/Registrieren"
-            android:id="@+id/buttonRegistrationReg"
+            android:text="@string/reg_btnRegistrieren_text"
+            android:id="@+id/reg_btnRegistrieren"
             android:singleLine="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/reg_lblValidate"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#AA3939" />
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/reg_progressBar"
+            android:layout_gravity="center_horizontal" />
+
     </LinearLayout>
 </RelativeLayout>
