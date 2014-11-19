@@ -14,100 +14,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
-            android:id="@+id/textView2" />
+            android:text="@string/txtAusleihe_activity_main"
+            android:id="@+id/txtAusleihe" />
 
-        <TabHost
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tabHost"
-            android:layout_gravity="center_horizontal">
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:orientation="vertical">
-
-                <TabWidget
-                    android:id="@android:id/tabs"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"></TabWidget>
-
-                <FrameLayout
-                    android:id="@android:id/tabcontent"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
-
-                    <LinearLayout
-                        android:id="@+id/tab1"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:orientation="vertical"></LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/tab2"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:orientation="vertical"></LinearLayout>
-
-                </FrameLayout>
-            </LinearLayout>
-        </TabHost>
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="112dp"
+            android:id="@+id/tblLoans"></TableLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
-            android:id="@+id/textView4" />
+            android:text="@string/txtReservation_activity_main"
+            android:id="@+id/txtReservation" />
 
-        <TabHost
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tabHost2">
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:orientation="vertical">
-
-                <TabWidget
-                    android:id="@android:id/tabs"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"></TabWidget>
-
-                <FrameLayout
-                    android:id="@android:id/tabcontent"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
-
-                    <LinearLayout
-                        android:id="@+id/linearLayout"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:orientation="vertical"></LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/linearLayout2"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:orientation="vertical"></LinearLayout>
-
-                </FrameLayout>
-            </LinearLayout>
-        </TabHost>
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="112dp"
+            android:id="@+id/tblReservations"></TableLayout>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Reservation löschen"
+            android:text="@string/btnReservationDelete_activity_main"
             android:id="@+id/btnDeleteReservation"
             android:layout_gravity="center_horizontal" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Reservieren"
+            android:text="@string/btnReservation_activity_main"
             android:id="@+id/btnReservation" />
 
     </LinearLayout>
@@ -115,7 +53,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Logout"
+        android:text="@string/btnLogout_activity_main"
         android:id="@+id/btnLogout"
         android:layout_gravity="center_horizontal"
         android:layout_alignParentBottom="true"
