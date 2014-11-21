@@ -25,25 +25,11 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity
             android:name="ch.hsr.sevi.view.LoginActivity"
             android:label="@string/title_activity_login" >
-<<<<<<< HEAD
-        </activity>
-        <activity
-            android:name="ch.hsr.sevi.view.RegistrationActivity"
-            android:label="@string/title_activity_registration" >
-=======
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
->>>>>>> 7cad6fcde9392ecafbaa06a0488f1de410971ec2
         </activity>
         <activity
             android:name="ch.hsr.sevi.view.RegistrationActivity"
@@ -54,12 +40,16 @@
                 android:value="ch.hsr.sevi.view.LoginActivity" />
         </activity>
         <activity
-            android:name="ch.hsr.sevi.minipanamaandroid.Reservation"
+            android:name="ch.hsr.sevi.view.ReservationActivity"
             android:label="@string/title_activity_reservation"
             android:parentActivityName="ch.hsr.sevi.view.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ch.hsr.sevi.view.MainActivity" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
