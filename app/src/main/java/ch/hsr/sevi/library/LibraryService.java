@@ -1,20 +1,19 @@
 package ch.hsr.sevi.library;
 
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 import android.os.AsyncTask;
 import android.util.Log;
-import java.lang.reflect.Type;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.Response;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Observable;
 import java.util.concurrent.Future;
 
 import ch.hsr.sevi.bl.Gadget;
@@ -140,7 +139,7 @@ public class LibraryService {
     }
 
 
-    public static void reserveGadget(Gadget toReserve, final Callback<List<Loan>> callback)
+    public static void reserveGadget(Gadget toReserve, final Callback<Boolean> callback)
     {
         if(token == null)
         {
@@ -150,10 +149,10 @@ public class LibraryService {
         parameter.put("token", getTokenAsString());
         parameter.put("gadgetId", toReserve.getInventoryNumber());
 
-        Request request = new Request(RestType.POST, serverUrl+ "/reservations", new TypeToken<List<Loan>>() {}.getType(), parameter,new Callback<List<Loan>>() {
+        Request request = new Request(RestType.POST, serverUrl+ "/reservations", Boolean.class, parameter,new Callback<Boolean>() {
             @Override
-            public void notfiy(List<Loan> input) {
-                callback.notfiy(input  == null?  new ArrayList<Loan>(): input);
+            public void notfiy(Boolean input) {
+                callback.notfiy(input  == null?  false : input);
                 notifyCallBackListeners();
             }
         } );
