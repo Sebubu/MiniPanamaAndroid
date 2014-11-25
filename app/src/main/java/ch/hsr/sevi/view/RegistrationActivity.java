@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import ch.hsr.sevi.library.Callback;
 import ch.hsr.sevi.library.LibraryService;
+import ch.hsr.sevi.view.main.MainActivity;
 
 
 public class RegistrationActivity extends Activity {

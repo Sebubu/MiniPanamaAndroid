@@ -7,19 +7,46 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+
+import ch.hsr.sevi.library.Callback;
+import ch.hsr.sevi.library.LibraryService;
+import ch.hsr.sevi.view.main.MainActivity;
 
 
 public class LoginActivity extends Activity {
+    private Callback<Boolean> loginCallback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        final Button button = (Button) findViewById(R.id.buttonRegistration);
-        button.setOnClickListener(new View.OnClickListener() {
+        final Button buttonRegistration = (Button) findViewById(R.id.buttonRegistration);
+        buttonRegistration.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),RegistrationActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        loginCallback = new Callback<Boolean>() {
+            @Override
+            public void notfiy(Boolean input) {
+                if(LibraryService.IsLoggedIn()){
+                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    startActivity(intent);
+                }else{
+                    System.out.println("Loggin failed!");
+                }
+            }
+        };
+
+        final Button buttonLogin = (Button) findViewById(R.id.buttonLogin);
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                EditText editEmail = (EditText) findViewById(R.id.editEmail);
+                EditText editPassword = (EditText) findViewById(R.id.editPassword);
+                LibraryService.login(editEmail.getText().toString(),editPassword.getText().toString(), loginCallback);
             }
         });
     }
