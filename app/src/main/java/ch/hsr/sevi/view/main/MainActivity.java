@@ -162,7 +162,7 @@ public class MainActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 for(int i=0; i<parent.getChildCount(); i++){
                     if(i == position){
-                        parent.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.blue));
+                        parent.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.lightsteelblue));
                         selectedItem = i;
                     }else{
                         parent.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.white));
