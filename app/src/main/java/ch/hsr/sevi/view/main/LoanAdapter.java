@@ -6,28 +6,29 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
 import java.util.ArrayList;
+import java.util.List;
 
 import ch.hsr.sevi.view.R;
+import ch.hsr.sevi.bl.Loan;
 
 /**
- * Created by SKU on 25.11.2014.
+ * Created by SKU on 02.12.2014.
  */
-public class RowAdapter extends ArrayAdapter<Item> {
+public class LoanAdapter extends ArrayAdapter<Loan> {
+    private final ArrayList<Loan> loanList;
 
-    private final ArrayList<Item> itemlList;
-
-
-    public RowAdapter(Context context, int textViewResourceId, ArrayList<Item> itemList) {
-        super(context, textViewResourceId, itemList);
-        this.itemlList = new ArrayList<Item>();
-        this.itemlList.addAll(itemList);
+    public LoanAdapter(Context context, int textViewResourceId, List<Loan> loanList) {
+        super(context, textViewResourceId, loanList);
+        this.loanList = new ArrayList<Loan>();
+        this.loanList.addAll(loanList);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        final Item item = itemlList.get(position);
+        final Loan loan = loanList.get(position);
 
         if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -36,8 +37,8 @@ public class RowAdapter extends ArrayAdapter<Item> {
         TextView textName = (TextView) convertView.findViewById(R.id.textName);
         TextView textDate = (TextView) convertView.findViewById(R.id.textDate);
 
-        if(item.getDate() != null) textDate.setText(item.getDate());
-        if(item.getName() != null) textName.setText(item.getName());
+        if(loan.getPickupDate().toString() != null) textDate.setText(loan.getPickupDate().toString());
+        if(loan.getGadget().getName() != null) textName.setText(loan.getGadget().getName());
 
 
         return convertView;

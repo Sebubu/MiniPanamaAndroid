@@ -70,20 +70,19 @@ public class MainActivity extends Activity {
         Button btnDeleteReservation = (Button) findViewById(R.id.btnDeleteReservation);
         btnDeleteReservation.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Item item = (Item) lvReservations.getAdapter().getItem(selectedItem);
-                Reservation d = null;
-                for(Reservation r: itemsReservations){
-                    if(r.getReservationId() == item.getId()){
-                        d = r;
-                        break;
-                    }
-                }
-                itemsReservations.remove(d);
-                if(d != null)LibraryService.deleteReservation( d,deleteReservationCallback);
+                Reservation r = (Reservation) lvReservations.getAdapter().getItem(selectedItem);
+                itemsReservations.remove(r);
+                if(r != null)LibraryService.deleteReservation( r,deleteReservationCallback);
             }
         });
-
-
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        if(LibraryService.IsLoggedIn()){
+            LibraryService.getReservationsForCustomer(reservationsCallback);
+            LibraryService.getLoansForCustomer(loansCallback);
+        }
     }
 
 
@@ -107,6 +106,7 @@ public class MainActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 
     private void initCallbacks(){
         logoutCallback = new Callback<Boolean>() {
@@ -151,17 +151,7 @@ public class MainActivity extends Activity {
     }
 
     private void fillReservations(){
-        ArrayList<Item> itemList = new ArrayList<Item>();
-        itemList.add(new Item("Name", "Lent till"));
-        for(Reservation r: itemsReservations)
-        {
-            String gadget = r.getGadget().getName();
-            String date = r.getReservationDate().toString();
-            String id = r.getReservationId();
-            itemList.add(new Item(id, gadget, date));
-        }
-
-        RowAdapter dataAdapter = new RowAdapter(this, R.layout.tableview_row, itemList);
+        ReservationAdapter dataAdapter = new ReservationAdapter(this, R.layout.tableview_row, itemsReservations);
         lvReservations = (ListView) findViewById(R.id.lvReservations);
         lvReservations.setAdapter(dataAdapter);
 
@@ -182,16 +172,7 @@ public class MainActivity extends Activity {
     }
 
     private void fillLoans(){
-        ArrayList<Item> itemList = new ArrayList<Item>();
-        itemList.add(new Item("Name", "Due date"));
-        for(Loan l: itemsLoans)
-        {
-            String gadget = l.getGadget().getName();
-            String date = l.getPickupDate().toString();
-            itemList.add(new Item(gadget, date));
-        }
-
-        RowAdapter dataAdapter = new RowAdapter(this, R.layout.tableview_row, itemList);
+        LoanAdapter dataAdapter = new LoanAdapter(this, R.layout.tableview_row, itemsLoans);
         lvLoans = (ListView) findViewById(R.id.lvLoans);
         lvLoans.setAdapter(dataAdapter);
 
