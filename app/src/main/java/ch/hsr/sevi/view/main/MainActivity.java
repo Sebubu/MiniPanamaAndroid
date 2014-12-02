@@ -37,6 +37,7 @@ public class MainActivity extends Activity {
     private Callback<List<Loan>> loansCallback;
     private Callback<Boolean> deleteReservationCallback;
     private int selectedItem;
+    private Button btnLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,10 +61,11 @@ public class MainActivity extends Activity {
             }
         });
 
-        Button btnLogout = (Button) findViewById(R.id.btnLogout);
+        btnLogout = (Button) findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 LibraryService.logout(logoutCallback);
+                btnLogout.setEnabled(false);
             }
         });
 
