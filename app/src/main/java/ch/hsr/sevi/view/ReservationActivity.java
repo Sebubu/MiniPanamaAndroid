@@ -29,7 +29,6 @@ public class ReservationActivity extends Activity {
     Button btnReservieren;
     EditText txtSearch;
     ListView lstItems;
-    ListView lstHeader;
     TextView lblQuantity;
     private int callbacksCount = 0;
 
@@ -66,6 +65,9 @@ public class ReservationActivity extends Activity {
         btnReservieren.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnReservieren.setEnabled(false);
+                txtSearch.setEnabled(false);
+                lstItems.setEnabled(false);
                 GadgetAdapter ga = (GadgetAdapter) lstItems.getAdapter();
                 List<Gadget> gadgets = ga.getSelected();
                 callbacksCount = gadgets.size();

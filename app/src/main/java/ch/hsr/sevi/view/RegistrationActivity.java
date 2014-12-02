@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import ch.hsr.sevi.library.Callback;
 import ch.hsr.sevi.library.LibraryService;
-import ch.hsr.sevi.view.main.MainActivity;
 
 
 public class RegistrationActivity extends Activity {
@@ -72,8 +71,14 @@ public class RegistrationActivity extends Activity {
                     Callback<Boolean> registerCallback = new Callback<Boolean>() {
                         @Override
                         public void notfiy(Boolean input) {
-                            Intent intent = new Intent(RegistrationActivity.this, MainActivity.class);
-                            startActivity(intent);
+                            if(input) {
+                                Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
+                                startActivity(intent);
+                            } else {
+                                txtValidate.setText(getResources().getString(R.string.reg_InvalidFailed));
+                            }
+                            pb.setVisibility(View.INVISIBLE);
+
                         }
                     };
                     btnRegister.setEnabled(false);

@@ -17,6 +17,7 @@
     <string name="reg_InvalidMartrikel">Martrikelnummer ist ungültig</string>
     <string name="reg_InvalidPassword">Passwort ist ungültig</string>
     <string name="reg_InvalidName">Name ist ungültig</string>
+    <string name="reg_InvalidFailed">Name ist ungültig</string>
     <string name="reg_title">RegistrationActivity</string>
     <string name="reg_matrikelNummer">Matrikel Nummer</string>
     <string name="reg_subtitle">Geben Sie Ihre Daten ein um einen neuen Account zu erstellen.</string>
