@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -59,6 +60,7 @@ public class ReservationActivity extends Activity {
             public void afterTextChanged(Editable editable) {
                GadgetAdapter ga = (GadgetAdapter)   lstItems.getAdapter();
                 ga.setFilter(editable.toString());
+                ReservationActivity.this.onItemsChanged();
             }
         });
 
@@ -131,20 +133,24 @@ public class ReservationActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void onItemsChanged() {
+        GadgetAdapter ga = (GadgetAdapter) lstItems.getAdapter();
+        lblQuantity.setText(ga.getSelected().size() + "/3");
+    }
 
 
    public class GadgetAdapter extends BaseAdapter{
         private List<Gadget> gadgets;
        private List <RowController> filteredModels = new ArrayList<RowController>();
        private List <RowController> baseModels = new ArrayList<RowController>();
-       Activity activity;
+       ReservationActivity activity;
 
 
 
        private String filter;
        public GadgetAdapter(Activity activity, List<Gadget> g){
            super();
-           this.activity = activity;
+           this.activity =(ReservationActivity) activity;
            this.gadgets = g;
            for(Gadget ga: gadgets) {
                baseModels.add(new RowController(ga));
@@ -181,7 +187,7 @@ public class ReservationActivity extends Activity {
            this.filteredModels = list;
 
            this.notifyDataSetChanged();
-       }
+         }
 
 
 
@@ -195,6 +201,15 @@ public class ReservationActivity extends Activity {
            }
            CheckBox chkGadget = (CheckBox) convertView.findViewById(R.id.row_checkBox);
 
+           chkGadget.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+               @Override
+               public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                  if( GadgetAdapter.this.getSelected().size() > 3) {
+                      compoundButton.setChecked(false);
+                  }
+                   GadgetAdapter.this.activity.onItemsChanged();
+               }
+           });
            RowController g = filteredModels.get(pos);
            g.setChkView(chkGadget);
            chkGadget.setText(g.getGadget().getName());
