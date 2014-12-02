@@ -38,6 +38,7 @@ public class MainActivity extends Activity {
     private Callback<Boolean> deleteReservationCallback;
     private int selectedItem;
     private Button btnLogout;
+    private Button btnReservation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +54,10 @@ public class MainActivity extends Activity {
             LibraryService.getLoansForCustomer(loansCallback);
         }
 
-        Button btnReservation = (Button) findViewById(R.id.btnReservation);
+        btnReservation = (Button) findViewById(R.id.btnReservation);
         btnReservation.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                btnReservation.setEnabled(false);
                 Intent intent = new Intent(MainActivity.this, ReservationActivity.class);
                 startActivity(intent);
             }
@@ -81,6 +83,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume(){
         super.onResume();
+        btnReservation.setEnabled(true);
         if(LibraryService.IsLoggedIn()){
             LibraryService.getReservationsForCustomer(reservationsCallback);
             LibraryService.getLoansForCustomer(loansCallback);
