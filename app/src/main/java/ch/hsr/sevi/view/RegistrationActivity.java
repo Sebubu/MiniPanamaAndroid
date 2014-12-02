@@ -78,6 +78,7 @@ public class RegistrationActivity extends Activity {
                                 txtValidate.setText(getResources().getString(R.string.reg_InvalidFailed));
                             }
                             pb.setVisibility(View.INVISIBLE);
+                            btnRegister.setEnabled(true);
 
                         }
                     };

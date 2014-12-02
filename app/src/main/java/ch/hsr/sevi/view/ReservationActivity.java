@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ch.hsr.sevi.bl.Gadget;
+import ch.hsr.sevi.bl.Reservation;
 import ch.hsr.sevi.library.Callback;
 import ch.hsr.sevi.library.LibraryService;
 
@@ -32,6 +33,7 @@ public class ReservationActivity extends Activity {
     ListView lstItems;
     TextView lblQuantity;
     private int callbacksCount = 0;
+    int maxReservation = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,21 +89,25 @@ public class ReservationActivity extends Activity {
 
             }
         });
-
-
-        LibraryService.login("b@hsr.ch","12345", new Callback<Boolean>() {
+        LibraryService.getGadgets(new Callback<List<Gadget>>() {
             @Override
-            public void notfiy(Boolean input) {
-                LibraryService.getGadgets(new Callback<List<Gadget>>() {
+            public void notfiy(List<Gadget> input) {
+                GadgetAdapter ga = new GadgetAdapter(ReservationActivity.this, input);
+                lstItems.setAdapter(ga);
+                LibraryService.getReservationsForCustomer(new Callback<List<Reservation>>() {
                     @Override
-                    public void notfiy(List<Gadget> input) {
-                        GadgetAdapter ga = new GadgetAdapter(ReservationActivity.this, input);
-                        lstItems.setAdapter(ga);
-
+                    public void notfiy(List<Reservation> input) {
+                        maxReservation =  3 -input.size();
+                        ReservationActivity.this.onItemsChanged();
+                        if(maxReservation < 1) {
+                            btnReservieren.setEnabled(false);
+                        }
                     }
                 });
             }
         });
+
+
 
 
 
@@ -135,7 +141,7 @@ public class ReservationActivity extends Activity {
 
     public void onItemsChanged() {
         GadgetAdapter ga = (GadgetAdapter) lstItems.getAdapter();
-        lblQuantity.setText(ga.getSelected().size() + "/3");
+        lblQuantity.setText(ga.getSelected().size() + "/" + maxReservation);
     }
 
 
@@ -204,7 +210,7 @@ public class ReservationActivity extends Activity {
            chkGadget.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                @Override
                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                  if( GadgetAdapter.this.getSelected().size() > 3) {
+                  if( GadgetAdapter.this.getSelected().size() > GadgetAdapter.this.activity.maxReservation) {
                       compoundButton.setChecked(false);
                   }
                    GadgetAdapter.this.activity.onItemsChanged();

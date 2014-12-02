@@ -96,7 +96,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/reg_lblValidate"
             android:layout_gravity="center_horizontal"
-            android:textColor="#AA3939" />
+            android:textColor="@color/red" />
 
         <ProgressBar
             style="?android:attr/progressBarStyleLarge"
