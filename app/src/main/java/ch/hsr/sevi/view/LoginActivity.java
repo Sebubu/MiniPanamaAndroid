@@ -1,6 +1,7 @@
 package ch.hsr.sevi.view;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,10 +19,12 @@ import ch.hsr.sevi.view.main.MainActivity;
 public class LoginActivity extends Activity {
     private Callback<Boolean> loginCallback;
     private Button buttonLogin;
+    private ProgressDialog progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        progress = new ProgressDialog(this);
         setContentView(R.layout.activity_login);
         final Button buttonRegistration = (Button) findViewById(R.id.buttonRegistration);
         buttonRegistration.setOnClickListener(new View.OnClickListener() {
@@ -38,6 +41,7 @@ public class LoginActivity extends Activity {
                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                     startActivity(intent);
                 }else{
+                    progress.dismiss();
                     TextView textValidation = (TextView) findViewById(R.id.textLoginValidation);
                     textValidation.setText("Login wrong, try it again!");
                     buttonLogin.setEnabled(true);
@@ -49,6 +53,9 @@ public class LoginActivity extends Activity {
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 buttonLogin.setEnabled(false);
+                progress.setMessage("wating for server response...");
+                progress.setIndeterminate(true);
+                progress.show();
                 EditText editEmail = (EditText) findViewById(R.id.editEmail);
                 EditText editPassword = (EditText) findViewById(R.id.editPassword);
                 LibraryService.login(editEmail.getText().toString(),editPassword.getText().toString(), loginCallback);
